@@ -198,6 +198,11 @@ def load_all_role_results(task='Cambridge'):
             
             model_name = name_without_suffix[len(task) + 1:]
             
+            # 跳过Gemma系列的模型
+            if 'gemma' in model_name.lower():
+                print(f"  跳过Gemma系列模型: {model_name}")
+                continue
+            
             print(f"  计算: {model_name}")
             correlation_data = calculate_correlation_from_jsonl(jsonl_file)
             
